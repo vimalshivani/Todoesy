@@ -10,10 +10,42 @@ import UIKit
 
 class ToDoListViewController: UITableViewController {
     
-    let myList = ["Shivani","Vimal","Kumar"]
+    var myList = ["Shivani","Vimal","Kumar"]
+    
+    var userDefault = UserDefaults.standard
 
+    @IBAction func addButtonPressed(_ sender: Any) {
+        
+        
+        var uitextField = UITextField()
+        
+        let alertController = UIAlertController(title: "Enter the task", message: " ", preferredStyle: .alert)
+        
+        let alertAction = UIAlertAction(title: "Add Item", style: .default) { (alertAction) in
+          
+            self.myList.append(uitextField.text!)
+            
+            self.tableView.reloadData()
+            
+            self.userDefault.setValue(self.myList, forKey: "MyList")
+        }
+        
+        
+        
+        alertController.addAction(alertAction)
+        
+        alertController.addTextField { (textField) in
+            uitextField = textField
+        }
+        
+        present(alertController, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let st = self.userDefault.value(forKey: "MyList") as? [String] {
+            myList = st
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
     

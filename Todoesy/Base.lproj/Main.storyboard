@@ -32,7 +32,14 @@
                             <outlet property="delegate" destination="QsN-d1-GsU" id="dmx-vY-Ymh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TodoEsty" id="gRD-xc-Rc5"/>
+                    <navigationItem key="navigationItem" title="TodoEsty" id="gRD-xc-Rc5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Vk3-Uo-4dE">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="QsN-d1-GsU" id="ncl-ZV-1da"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Met-DQ-Dsx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
