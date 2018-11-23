@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 import CoreData
 
 @UIApplicationMain
@@ -16,6 +17,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+        let item = Item()
+        item.name = "Vimal"
+        item.status = false
+        
+        do {
+        let realm = try Realm()
+            try realm.write {
+                realm.add(item)
+            }
+        }
+        catch {
+            print("initialziaing \(error)")
+        }
+        
+        
+        
+        
+        
        return true
     }
 
